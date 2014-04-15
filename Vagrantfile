@@ -42,6 +42,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Add additional items needed to run the provided test case.
   config.vm.provision :shell, :path => "provisioning-scripts/provision-for-testing.sh"
 
+  # Forward X11 so that we can display guest browsers on the host for troubleshooting
+  config.ssh.forward_x11 = true
+
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
